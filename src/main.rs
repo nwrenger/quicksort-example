@@ -6,6 +6,16 @@ fn main() {
 }
 
 fn quicksort(a: Vec<i32>) -> Vec<i32> {
+    let mut sorted = false;
+    for pair in a.windows(2) {
+        if pair[0] > pair[1] {
+            sorted = true;
+            break;
+        } else {
+            sorted = false;
+        }
+    }
+    if sorted {
     let pivot = if let Some(&pivot) = a.last() {
         pivot
     } else {
@@ -25,4 +35,8 @@ fn quicksort(a: Vec<i32>) -> Vec<i32> {
     b.push(pivot);
     b.append(&mut quicksort(bigger));
     b
+    }
+    else {
+        return a;
+    }
 }
