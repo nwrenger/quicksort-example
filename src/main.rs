@@ -16,27 +16,26 @@ fn quicksort(a: Vec<i32>) -> Vec<i32> {
         }
     }
     if sorted {
-    let pivot = if let Some(&pivot) = a.last() {
-        pivot
-    } else {
-        return a;
-    };
-    let mut smaller = vec![];
-    let mut bigger = vec![];
-    for &x in &a[0..a.len() - 1] {
-        if x < pivot {
-            smaller.push(x)
+        let pivot = if let Some(&pivot) = a.last() {
+            pivot
         } else {
-            bigger.push(x)
+            return a;
+        };
+        let mut smaller = vec![];
+        let mut bigger = vec![];
+        for &x in &a[0..a.len() - 1] {
+            if x < pivot {
+                smaller.push(x)
+            } else {
+                bigger.push(x)
+            }
         }
-    }
-    let mut b: Vec<i32> = vec![];
-    b.append(&mut quicksort(smaller));
-    b.push(pivot);
-    b.append(&mut quicksort(bigger));
-    b
-    }
-    else {
+        let mut b: Vec<i32> = vec![];
+        b.append(&mut quicksort(smaller));
+        b.push(pivot);
+        b.append(&mut quicksort(bigger));
+        b
+    } else {
         return a;
     }
 }
