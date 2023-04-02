@@ -36,6 +36,6 @@ fn quicksort(a: Vec<i32>) -> Vec<i32> {
         b.append(&mut quicksort(bigger));
         b
     } else {
-        return a;
+        a
     }
 }
